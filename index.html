@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juan Llopis</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="fr3.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  </head>
+  <body>
+    <div class="frame">
+      <div class="columns">
+        <!-- COL 1: BIO -->
+        <div class="col" id="colBio">
+          Juan Llopis, diseñador gráfico.<!--,</br> lettering artist y calígrafo.-->
+        </div>
+
+        <!-- COL 2: PROJECT LIST -->
+        <div class="col" id="colList">
+          <ul class="project-list">
+            <li data-project="estanco">Real Estanco de Vallecas</li>
+            <li data-project="actua">Actúa Psicología</li>
+            <li data-project="exlibris">Ex Libris, Belle Chiara</li>
+            <li data-project="casacultura">Casa de la Cultura d'Alzira</li>
+            <li data-project="parques">Parques, Bernal</li>
+            <li data-project="apart">Apart Type Studio</li>
+            <li data-project="claur">Claur Tiles</li>
+            <li data-project="tenda">"El sitio de siempre"</li>
+            <li data-project="casaencendida">Editorial La Casa Encendida</li>
+            <li data-project="gomet">Gomet Verd Estudi</li>
+          </ul>
+        </div>
+
+        <!-- COL 3: DETAIL -->
+        <div class="col col-detail" id="colDetail">
+          <div class="detail-img" id="detailImg">
+            <img id="detailImgEl" src="" alt="" />
+          </div>
+          <div class="detail-text" id="detailText"></div>
+          <div class="detail-counter" id="detailCounter"></div>
+          <div class="nav-zone nav-left" id="navLeft"></div>
+          <div class="nav-zone nav-right" id="navRight"></div>
+        </div>
+      </div>
+      <footer>
+        <div class="foot-cell">
+          <a href="mailto:juantte@gmail.com">Mail</a>
+        </div>
+        <div class="foot-cell">
+          <a href="cv_juanllopis.pdf" download>Currículum</a>
+        </div>
+        <div class="foot-cell">
+          <div class="lang-group">
+            <button data-lang="en">ENG</button>
+            <span class="lang-sep">/</span>
+            <button data-lang="es" class="active-lang">CAST</button>
+            <span class="lang-sep">/</span>
+            <button data-lang="val">VAL</button>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

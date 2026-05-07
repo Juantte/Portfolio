@@ -1,0 +1,227 @@
+@font-face {
+ /* font-family: "KTFPrima";
+  src: url("KTFPrimaTrial-Regular.otf") format("opentype");*/
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #ffffff;
+  color: #111;
+  font-family: "KTFPrima", Arial, sans-serif;
+  font-size: clamp(13px, 1.2vw, 19px);
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+/* ── FRAME ── */
+.frame {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
+  padding: 30px;
+}
+
+/* ── COLUMNS ── */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  min-height: 0;
+}
+
+.col {
+  overflow-y: auto;
+  min-height: 0;
+  /* background: rgba(0, 0, 0, 0.06);*/
+}
+
+.col::-webkit-scrollbar {
+  width: 0;
+}
+
+/* ── PROJECT LIST ── */
+.project-list {
+  list-style: none;
+}
+
+.project-list li {
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.project-list li:hover {
+  text-decoration: underline;
+  color: #111;
+}
+
+#colDetail {
+  position: relative;
+  transition: padding-top 0.4s ease-in-out;
+}
+
+/* ACTIVE state: This is what your JS toggles */
+.project-list li.active {
+  text-decoration: underline;
+  color: #111;
+  /* font-weight: bold;  <- Only add this if you want it to pop more */
+}
+
+
+/* --- COL 3: DETAIL AREA --- */
+
+/* The container for your images and text */
+.col-detail {
+  display: flex;
+  flex-direction: column;
+  /*cursor: pointer;*/
+  transition: padding-top 0.4s ease-in-out; /* Smooth movement */
+  /*background: rgba(0, 0, 0, 0.03);  Subtle tint to see the area */
+  min-height: 0;
+  overflow-y: auto; /* Allows scrolling if an image is very tall */
+}
+
+/* Hide the scrollbar for a cleaner designer look */
+.col-detail::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Image Container */
+.detail-img {
+  width: 100%;
+  display: none; /* Stays hidden until JS adds .visible */
+}
+
+.detail-img.visible {
+  display: block;
+}
+
+/* The actual image */
+.detail-img img {
+  width: 100%; /* Fits the width of the column */
+  height: auto; /* Natural height - NO CROPPING */
+  display: block;
+}
+
+/* The Counter (1/5, 2/5...) */
+.detail-counter {
+  margin-top: 15px; /* This keeps the gap consistent below images AND text */
+  /*font-size: 14px;*/
+  display: none;
+}
+
+.detail-counter.visible {
+  display: block;
+}
+
+/* The Text Slide (The last step) */
+.detail-text {
+  display: none;
+  line-height: 1.25;
+  padding-bottom: 5px; /* Adds a tiny gap above the counter */
+  color: #111;
+}
+
+.detail-text.visible {
+  display: block;
+}
+
+.project-data {
+  color: #999;
+}
+
+/* ── FOOTER ── */
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  padding-top: 20px;
+  padding-bottom: 4px;
+}
+
+.foot-cell {
+  font-size: inherit;
+  font-family: inherit;
+  display: flex;
+  align-items: flex-end;
+  /*  background: rgba(0, 0, 0, 0.06);*/
+}
+
+a,
+button {
+  /* Use 'inherit' so it matches the 18.3px you set in the body */
+  font-size: inherit;
+
+  /* You can also use 'inherit' here to avoid repeating the font name */
+  font-family: inherit;
+  color: #111;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+a:hover,
+button:hover {
+  color: #999;
+}
+
+/* --- Language Switcher Styles --- */
+
+/* Reset buttons to ensure they are always black and have no default underline */
+.lang-group button {
+  color: #111;
+  text-decoration: none;
+  transition: none; /* Optional: makes the underline appear instantly */
+}
+
+/* This is the class we will add via JavaScript */
+.lang-group button.active-lang {
+  text-decoration: underline;
+  font-weight: normal; /* Keeps the weight consistent so the layout doesn't jump */
+}
+
+/* Ensure the hover doesn't change color if you want it 'always black' */
+.lang-group button:hover {
+  color: #111;
+  text-decoration: underline; /* Shows the underline on hover too */
+}
+
+.nav-zone {
+  position: sticky;   /* Se queda fija en la pantalla aunque bajes */
+  top: 0;             /* Se pega al techo de la columna */
+  height: 100vh;      /* Ocupa toda la altura de la ventana */
+  margin-top: -100vh; /* Truco: sube la zona para que flote sobre el contenido sin empujarlo */
+  width: 50%;
+  z-index: 100;       /* Valor alto para estar siempre por encima de imágenes/texto */
+  display: none;
+}
+
+/* Solo se muestran cuando el proyecto está activo */
+.nav-zone.active {
+  display: block;
+}
+
+.nav-left {
+  left: 0;
+  cursor: w-resize; /* Flecha hacia la izquierda (estilo sistema) */
+}
+
+.nav-right {
+  right: 0;
+  cursor: e-resize;
+  margin-left: 50%; /* La zona derecha empieza a la mitad */
+}
+
+/*tailwind libreria consultar
